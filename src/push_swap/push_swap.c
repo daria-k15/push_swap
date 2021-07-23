@@ -45,6 +45,7 @@ void	sorting(t_stack *a, t_stack *b)
 }
 
 int	push_swap(t_stack *a, t_stack *b)
+
 {
 	if (is_duplicate(a))
 		error();
