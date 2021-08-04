@@ -65,4 +65,7 @@ int		ft_atoi(const char *str);
 int		not_num(const char *str);
 t_stack	*stack_init(int length);
 
+
+void listprint(t_stack *lst);
+
 #endif

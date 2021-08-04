@@ -21,7 +21,7 @@ int	findmax_2(t_stack *a, int max)
 	max_2 = 0;
 	while (a)
 	{
-		if (a->value > max_2 && a->value < max)
+		if (a->value < max && a->value > max_2)
 			max_2 = a->value;
 		a = a->next;
 	}

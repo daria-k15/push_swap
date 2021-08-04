@@ -44,6 +44,18 @@ void	sorting(t_stack *a, t_stack *b)
 	part_to_b(&a, &b, a->min);
 }
 
+void listprint(t_stack *lst)
+{
+  t_stack *p;
+  p = lst;
+
+  while (p != NULL)
+  {
+      printf("value = %d\n", p->value);
+      p = p->next;
+  }
+}
+
 int	push_swap(t_stack *a, t_stack *b)
 
 {
@@ -51,9 +63,9 @@ int	push_swap(t_stack *a, t_stack *b)
 		error();
 	if (is_sort(&a, &b))
 		return (0);
-	if (stack_length(a) == 3)
+	if (stack_length(a) < 4)
 		sort_three(&a);
-	else if (stack_length(a) == 5)
+	else if (stack_length(a) < 6)
 		sort_five(&a, &b);
 	else
 		sorting(a, b);
@@ -72,6 +84,10 @@ int	main(int argc, char **argv)
 		min_init(a);
 		max_init(a);
 		push_swap(a, b);
+		// listprint(a);
+		// printf("---------\n");
+		// listprint(b);
+		// printf("------------\n");
 		free_s(&a);
 	}
 	return (0);
