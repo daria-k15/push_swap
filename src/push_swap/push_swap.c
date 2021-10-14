@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:32:47 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 15:54:09 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
 t_stack	*arg_initial(int argc, char **argv)
@@ -12,7 +24,7 @@ t_stack	*arg_initial(int argc, char **argv)
 	{
 		if (not_num(argv[i]))
 			error();
-		num = ft_atoi(argv[i]);
+		num = ft_atoi_n(argv[i]);
 		if (i == 1)
 			a = new_s(num);
 		else
@@ -44,18 +56,6 @@ void	sorting(t_stack *a, t_stack *b)
 	part_to_b(&a, &b, a->min);
 }
 
-void listprint(t_stack *lst)
-{
-  t_stack *p;
-  p = lst;
-
-  while (p != NULL)
-  {
-      printf("value = %d\n", p->value);
-      p = p->next;
-  }
-}
-
 int	push_swap(t_stack *a, t_stack *b)
 
 {
@@ -63,9 +63,11 @@ int	push_swap(t_stack *a, t_stack *b)
 		error();
 	if (is_sort(&a, &b))
 		return (0);
-	if (stack_length(a) < 4)
+	if (stack_length(a) == 3)
 		sort_three(&a);
-	else if (stack_length(a) < 6)
+	else if (stack_length(a) == 4)
+		sort_four(&a, &b);
+	else if (stack_length(a) == 5)
 		sort_five(&a, &b);
 	else
 		sorting(a, b);
@@ -84,10 +86,6 @@ int	main(int argc, char **argv)
 		min_init(a);
 		max_init(a);
 		push_swap(a, b);
-		// listprint(a);
-		// printf("---------\n");
-		// listprint(b);
-		// printf("------------\n");
 		free_s(&a);
 	}
 	return (0);

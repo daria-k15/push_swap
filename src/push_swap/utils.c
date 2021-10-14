@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:33:42 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:33:43 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
 void	error(void)
@@ -21,7 +33,7 @@ void	ft_putstr(char *s)
 	}
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi_n(const char *str)
 {
 	size_t		i;
 	int			sign;
@@ -41,7 +53,7 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = (nb * 10) + (str[i] - '0');
-		if (nb < -2147483647 && sign == -1)
+		if (nb > 2147483648 && sign == -1)
 			error();
 		if (nb > 2147483647 && sign == 1)
 			error();
@@ -63,18 +75,4 @@ int	not_num(const char *str)
 		i++;
 	}
 	return (0);
-}
-
-t_stack	*stack_init(int length)
-{
-	t_stack	*stack;
-
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		return (NULL);
-	stack->stack = (int *)malloc(sizeof(int) * length);
-	if (!stack->stack)
-		return (NULL);
-	stack->length = length;
-	return (stack);
 }

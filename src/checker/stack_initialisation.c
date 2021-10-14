@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_initialisation.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:31:13 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:31:20 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/checker.h"
 
 void	add_back(t_stack *lst, int value)
@@ -42,24 +54,6 @@ int	stack_length(t_stack *lst)
 	}
 	return (len);
 }
-
-// int			is_sorted2(t_stack **a, t_stack **b)
-// {
-// 	// int		i;
-// 	t_stack *a1;
-
-// 	// i = 0;
-// 	if (stack_length(*b))
-// 		return (0);	
-// 	a1 = *a;
-// 	while (a1->next != NULL)
-// 	{
-// 		if (a1->value > a1->next->value)
-// 			return (0);
-// 		a1 = a1->next;
-// 	}
-// 	return (1);
-// }
 
 int	is_sorted(t_stack **a)
 {

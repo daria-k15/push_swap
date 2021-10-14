@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:33:10 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:36:12 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
 void	sort_three(t_stack **a)
@@ -18,14 +30,11 @@ void	sort_three(t_stack **a)
 	}
 }
 
-void sort_four(t_stack **a, t_stack **b)
+void	sort_four(t_stack **a, t_stack **b)
 {
-	int max;
-
-	max = find_max(*a);
 	while (stack_length(*a) > 3)
 	{
-		if ((*a)->value == max)
+		if ((*a)->value == (*a)->max)
 			push(b, a, 1);
 		else
 			rotate (a, 1);
@@ -43,33 +52,23 @@ void sort_four(t_stack **a, t_stack **b)
 
 void	sort_five(t_stack **a, t_stack **b)
 {
-	int	max;
-	int max_2;
-
-	max = find_max(*a);
-	max_2 = findmax_2(*a, max);	
-	if (stack_length(*a) == 4)
-		sort_four(a, b);
-	else
+	while (stack_length(*a) != 3)
 	{
-		while (stack_length(*a) > 3)
-		{
-			if ((*a)->value == max || (*a)->value == max_2)
-				push(b, a, 1);
-			else
-				rotate (a, 1);
-		}
-		sort_three(a);
-		if ((*b)->value > (*b)->next->value)
-			swap(b, 0);
-		while (stack_length(*a) != 5)
-		{
-			push(a, b, 0);
-			if ((*a)->value > (*a)->next->value && (*a)->value > last_v(*a))
-				rotate(a, 1);
-			else if ((*a)->value > (*a)->next->value)
-				swap(a, 1);
-		}
+		if ((*a)->value == (*a)->max || (*a)->value == (*a)->min)
+			push(b, a, 1);
+		else
+			rotate (a, 1);
+	}
+	sort_three(a);
+	if ((*b)->value > (*b)->next->value)
+		swap(b, 0);
+	while ((*b) != NULL)
+	{
+		push(a, b, 0);
+		if ((*a)->value > (*a)->next->value && (*a)->value > last_v(*a))
+			rotate(a, 1);
+		else if ((*a)->value > (*a)->next->value)
+			swap(a, 1);
 	}
 }
 

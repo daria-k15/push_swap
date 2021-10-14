@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:32:01 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:32:07 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
 int	find_max(t_stack *a)
@@ -12,20 +24,6 @@ int	find_max(t_stack *a)
 		a = a->next;
 	}
 	return (max);
-}
-
-int	findmax_2(t_stack *a, int max)
-{
-	int	max_2;
-
-	max_2 = 0;
-	while (a)
-	{
-		if (a->value < max && a->value > max_2)
-			max_2 = a->value;
-		a = a->next;
-	}
-	return (max_2);
 }
 
 int	find_min(t_stack *a)

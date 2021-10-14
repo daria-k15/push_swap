@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:31:26 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:31:28 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/checker.h"
 
 void	error(void)
@@ -6,7 +18,7 @@ void	error(void)
 	exit(1);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi_n(const char *str)
 {
 	size_t		i;
 	int			sign;
@@ -26,7 +38,7 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = (nb * 10) + (str[i] - '0');
-		if (nb < -2147483647 && sign == -1)
+		if (nb > 2147483648 && sign == -1)
 			error();
 		if (nb > 2147483647 && sign == 1)
 			error();

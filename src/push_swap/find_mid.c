@@ -1,4 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_mid.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:31:53 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:31:55 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
+
+t_stack	*stack_init(int length)
+{
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
+	stack->stack = (int *)malloc(sizeof(int) * length);
+	if (!stack->stack)
+		return (NULL);
+	stack->length = length;
+	return (stack);
+}
 
 t_stack	*stackcpy(t_stack *a)
 {

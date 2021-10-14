@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:30:48 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:30:52 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/checker.h"
 
 void	free_s(t_stack **a)
@@ -26,7 +38,7 @@ t_stack	*arg_initial(int argc, char **argv)
 	{
 		if (not_num(argv[i]))
 			error();
-		num = ft_atoi(argv[i]);
+		num = ft_atoi_n(argv[i]);
 		if (i == 1)
 			a = new_s(num);
 		else

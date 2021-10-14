@@ -4,7 +4,6 @@ NAME_P = push_swap
 
 FLAGS = -Wall -Wextra -Werror
 LIB_DIR = libft/
-HEADER_DIR = include/
 
 SRC_C =			checker.c \
 				operations_1.c \
@@ -28,6 +27,9 @@ SRC_P =			ft_find.c \
 
 SRC_DIR_P =		src/push_swap/
 
+HEAD_DIR = inc/
+HEAD_P = push_swap.h
+HEAD_C = checker.h
 
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -38,21 +40,21 @@ OBJ_P = $(patsubst %.c,%.o,$(SRC_P))
 
 OBJ_DIR = obj/
 OBJ_DIR_C = $(OBJ_DIR)checker_o/
-OBJ_DIR_P = obj/push_swap_o/
+OBJ_DIR_P = $(OBJ_DIR)push_swap_o/
 OBJS_C = $(addprefix $(OBJ_DIR_C),$(OBJ_C))
 OBJS_P = $(addprefix $(OBJ_DIR_P),$(OBJ_P))
 OBJS = $(addprefix $(OBJ_DIR_C),$(OBJ_C)) $(addprefix $(OBJ_DIR_P),$(OBJ_P))
 
 all: $(NAME)
 
-$(OBJ_DIR_C)%.o: $(SRC_DIR_C)%.c
+$(OBJ_DIR_C)%.o: $(SRC_DIR_C)%.c $(HEAD_DIR)$(HEAD_C)
 	@mkdir -p $(OBJ_DIR_C)
-	@gcc -c $< -o $@ -I $(HEADER_DIR)
+	@gcc -c $< -o $@ -I $(HEAD_DIR)
 	@echo "$(NAME): $(GREEN)$(OBJ_DIR_C) was created$(RESET)"
 
-$(OBJ_DIR_P)%.o: $(SRC_DIR_P)%.c
+$(OBJ_DIR_P)%.o: $(SRC_DIR_P)%.c $(HEAD_DIR)$(HEAD_P)
 	@mkdir -p $(OBJ_DIR_P)
-	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER_DIR)
+	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEAD_DIR)
 	@echo "$(NAME): $(GREEN)$(OBJ_DIR_P) was created$(RESET)"
 
 $(NAME):  $(OBJS)
@@ -72,4 +74,5 @@ fclean: clean
 	@echo "$(NAME): $(RED)$(NAME_P) and $(RED)$(NAME_C) were deleted$(RESET)"
 
 re: fclean all
+
 .PHONY: all clean fclean re

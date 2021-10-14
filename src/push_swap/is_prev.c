@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_prev.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heveline <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/05 13:32:12 by heveline          #+#    #+#             */
+/*   Updated: 2021/08/05 13:32:17 by heveline         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/push_swap.h"
 
-/*
-** is sub_number previous for main_number in two stacks?
-*/
 int	is_previous(t_stack **a, t_stack **b, int sub, int main)
 {
 	int		min;
